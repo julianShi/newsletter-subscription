@@ -246,9 +246,20 @@ This new REST API is not exposed to users. So there is no need for user authoriz
 
 There are plenty of third-party middlewares for throttling, for example Spring Cloud Gateway, Alibaba Sentinel. 
 
-### Monitoring
+### Monitoring and Alerting
 
-We want to collect, process, tranport data, and to alert for certain pattern. There are popular middlewares like Prometheus、Grafana、Zabbix for our choice. 
+Distributed tracing is a must in common microservice architecture. There are open-source options like the OpenTracing, Prometheus, and commercial options like AWS X-Ray. 
+
+Common metrics to monitor are:
+
+- Business metrics: daily subscription and unsubscriptions. 
+- API metrics: Abrupt increase or drop of traffic can indicate the failure of the service. The SLO in 99% and 99.9% percentiles. The availibility of this API, the latency of this API. 
+- Infrastructure metrics: CPU usage, memory usage, database traffic and latency etc. 
+- The logs. 
+
+There are popular metrics collecting, processing and visualization tools like Prometheus、Grafana、Zabbix
+
+Real-time alerting is not required for this non-critial newsletter subscription function. But we still need messaging channels to actively inform operators about failures. There are popular tools like the Grafana that provide APIs to integrate alert messages to team communication channels like Slack, Microsoft Teams etc. 
 
 ## Looking Forward
 
